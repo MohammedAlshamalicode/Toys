@@ -59,7 +59,7 @@ public class OrderController {
                     order.getCustomer().getCountry().getName(),
                     order.getOrderDetails().stream()
                             .map(detail -> detail.getPriceEach().multiply(BigDecimal.valueOf(detail.getOrdered())))
-                            .reduce(BigDecimal.ZERO, BigDecimal::add), // حساب إجمالي القيمة
+                            .reduce(BigDecimal.ZERO, BigDecimal::add),
                     order.getOrderDetails().stream()
                             .map(OrderDetailItemDTO::new)
                             .toList());
