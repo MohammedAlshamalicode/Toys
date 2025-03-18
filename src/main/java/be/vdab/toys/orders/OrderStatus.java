@@ -1,6 +1,8 @@
 package be.vdab.toys.orders;
 
-public enum OrderStatus {
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+
+public enum OrderStatus {
     PROCESSING, SHIPPED, CANCELLED, WAITING, RESOLVED, DISPUTED ;
 }

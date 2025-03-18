@@ -1,7 +1,9 @@
 package be.vdab.toys.orders;
 
-import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import java.time.LocalDate;
+@JsonPropertyOrder({"id", "ordered", "required", "customerName", "status"})
 public interface UnshippedOrderDTO {
     Long getId();
     LocalDate getOrdered();

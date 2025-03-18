@@ -1,5 +1,7 @@
 package be.vdab.toys.orders;
 
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +23,11 @@ public interface OrdersRepository extends JpaRepository<Order, Long> {
 
     Optional<Order> findOrderById(Long id);
 
+//    @EntityGraph(attributePaths = "customer")
+//    List<Order> findByStatusNotIn(List<OrderStatus> statuses, Sort sort);
 
+    @EntityGraph(attributePaths = {"customer", "customer.country", "orderDetails", "orderDetails.product"})
+    Optional<Order> findById(long id);
 
 }
 

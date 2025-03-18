@@ -46,6 +46,9 @@ public class OrderService {
             Product product = detail.getProduct();
             if (product.getInStock() < detail.getOrdered()) {
                 throw new OnvoldoendeVoorraadException();
+            } else {
+                product.setInStock(product.getInStock() - detail.getOrdered());
+                product.setInOrder(product.getInOrder() - detail.getOrdered());
             }
         }
 
@@ -53,7 +56,7 @@ public class OrderService {
         order.setStatus(OrderStatus.SHIPPED);
         order.setShipped(LocalDate.now());
 
-        productRepository.updateStock(id);
+//        productRepository.updateStock(id);
 
         // Wijzigingen opslaan
         ordersRepository.save(order);

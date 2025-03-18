@@ -43,7 +43,9 @@ public class OrderController {
     public void shipOrder(@PathVariable Long id) {
         try {
             orderService.shipOrder(id);
-        } catch (OrderNotFoundException | OrderAlreadyShippedException | OnvoldoendeVoorraadException e) {
+        } catch (OrderNotFoundException e ) {
+            throw new OrderNotFoundException();
+        } catch (OrderAlreadyShippedException | OnvoldoendeVoorraadException e) {
             throw new OrderAlreadyShippedException();
         }
     }
